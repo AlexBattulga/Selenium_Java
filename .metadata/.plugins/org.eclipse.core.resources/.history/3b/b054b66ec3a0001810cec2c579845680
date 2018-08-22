@@ -1,0 +1,28 @@
+package com.selenium.basictests;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class BasicCommandsForBrowser {
+	WebDriverConfig driver = new WebDriverConfig();
+	WebDriver chrome = driver.getChrome();
+	@Test
+	// always include test in back of method
+	// add test in front of each class, so in the future developer don't confuse with other methods
+	public void basicCommandTest()
+	{
+		// it will open browser and wait for 10 sek to website appears, if website appears within 10 sek it will close, if dont it will wait 10 sek for website to appears
+		chrome.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		chrome.navigate().to("http://google.com");
+		chrome.findElement(By.id("q")).getText();
+	}
+	@AfterTest
+	public void closeTest()
+	{
+		chrome.close();
+	}
+}

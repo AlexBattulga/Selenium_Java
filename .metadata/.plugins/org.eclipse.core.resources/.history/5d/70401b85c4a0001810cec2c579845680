@@ -1,0 +1,34 @@
+package com.selenium.basictests;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class BasicCommandsForBrowser {
+	WebDriverConfig driver = new WebDriverConfig();
+	WebDriver chrome = driver.getChrome();
+	@Test
+	// always include test in back of method
+	// add test in front of each class, so in the future developer don't confuse with other methods
+	public void basicCommandTest()
+	{
+		// Implicit wait means developer will set wait time 
+		// it will open browser and wait for 10 sek to website appears, if website appears within 10 sek it will close, if dont it will wait 10 sek for website to appears
+		chrome.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		chrome.navigate().to("http://google.com");
+		chrome.findElement(By.name("q")).sendKeys("This is QA automation class");
+		// Explicit wait means it will wait till find a element 
+		WebDriverWait wait = new WebDriverWait(chrome, 15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("q")));
+	}
+	@AfterTest
+	public void closeTest()
+	{
+		chrome.close();
+	}
+}

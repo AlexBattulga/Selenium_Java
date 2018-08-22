@@ -1,0 +1,62 @@
+package com.example.advanced;
+
+import org.testng.annotations.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+import com.selenium.basictests.WebDriverConfig;
+
+public class TestArtOfTesting {
+	WebDriverConfig d = new WebDriverConfig();
+	WebDriver chrome = d.getChrome();
+	@Test
+	public void artOfTest() throws InterruptedException
+	{
+		chrome.navigate().to("http://artoftesting.com/sampleSiteForSelenium.html");
+//		chrome.findElement(By.linkText("This is a link")).click();
+//		chrome.findElement(By.name("firstName")).sendKeys("Art Of Testing");
+//		chrome.findElement(By.id("idOfButton")).click();
+	}
+	//@Test
+	public void doubleClickTest() throws InterruptedException
+	{
+		Actions action = new Actions(chrome);
+		WebElement doubleBtn = chrome.findElement(By.xpath("//*[@id=\"dblClkBtn\"]"));
+		action.doubleClick(doubleBtn).perform();
+		chrome.switchTo().alert().accept();
+		Thread.sleep(6000);
+	}
+	@Test
+	public void chooseGenderTest() throws InterruptedException
+	{
+		WebElement webs = chrome.findElement(By.id("male"));
+		webs.click();
+		Thread.sleep(6000);
+	}
+	//@Test
+	public void chooseCheckBoxTest()
+	{
+		WebElement webTest = chrome.findElement(By.xpath("//*[@id=\"commonWebElements\"]/form[2]/input[1]"));
+		webTest.click();
+	}
+	//@Test
+	public void dropDownTest() throws InterruptedException
+	{
+		WebElement web = chrome.findElement(By.id("testingDropdown"));
+		Select selectDropDown = new Select(web);
+		selectDropDown.selectByValue("Performance");
+		Thread.sleep(6000);
+	}
+	@AfterTest
+	public void closeTest()
+	{
+		chrome.close();
+	}
+
+}

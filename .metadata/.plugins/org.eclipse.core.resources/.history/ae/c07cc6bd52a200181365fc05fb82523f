@@ -1,0 +1,16 @@
+package com.example.advanced;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+import com.selenium.basictests.WebDriverConfig;
+
+public class TestDropDown {
+	WebDriverConfig d = new WebDriverConfig();
+	WebDriver chrome = d.getChrome();
+	@Test
+	public void getDropDownTest()
+	{
+		chrome.navigate().to("http://demo.guru99.com/test/newtours/register.php");
+	}
+}

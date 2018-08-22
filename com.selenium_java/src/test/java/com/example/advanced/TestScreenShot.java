@@ -15,7 +15,7 @@ import com.selenium.basictests.WebDriverConfig;
 public class TestScreenShot {
 	WebDriverConfig driver = new WebDriverConfig();
 	WebDriver firefox = driver.getFirefox();
-	
+	//Test
 	@Test
 	public void screenShotTest() {
 		firefox.navigate().to("http://www.google.com");
