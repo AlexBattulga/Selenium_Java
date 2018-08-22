@@ -1,0 +1,23 @@
+package com.selenium.basictests;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class TestW3School {
+	WebDriverConfig driver = new WebDriverConfig();
+	WebDriver firefox = driver.getFirefox();
+	@Test
+	public void goToW3Test()
+	{
+		firefox.navigate().to("http://w3schools.com");
+		firefox.findElement(By.xpath("/html/body/div[7]/div[1]/div[1]/a[1]")).click();
+		firefox.navigate().back();
+	}
+	@AfterTest
+	public void closeTest()
+	{
+		firefox.close();
+	}
+}
