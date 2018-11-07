@@ -14,7 +14,7 @@ public class NavigateToGoogle {
 		WebDriver driver = new ChromeDriver();
 		driver.get("http://www.gmail.com/");
 		driver.manage().window().maximize();
-		driver.findElement(By.id("identifierId")).sendKeys("ebar1126@gmail.com");
+		driver.findElement(By.id("identifierId")).sendKeys("***********");
 		driver.findElement(By.xpath("//span[contains(text(),'Next')]")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.name("password")).sendKeys(decodedPass());
